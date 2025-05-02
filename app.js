@@ -15,7 +15,8 @@ function seleccionar(){
     document.getElementById("nav").classList = "";
     menuVisible = false;
 }
-//Funcion que aplica las animaciones de las habilidades
+
+//Funcion que aplica las animaciones de las habilidades y actualiza los colores automáticamente
 function efectoHabilidades() {
     var skills = document.getElementById("skills");
     var distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
@@ -46,12 +47,11 @@ function efectoHabilidades() {
         habilidades[8].classList.remove("dedicacion");
         habilidades[9].classList.remove("proyect");
     }
+    actualizarHabilidades();
 }
 
 // Agregar evento de scroll
 window.addEventListener('scroll', efectoHabilidades);
-
-
 
 //detecto el scrolling para aplicar la animacion de la barra de habilidades
 window.onscroll = function(){
@@ -73,8 +73,8 @@ function toggleContent(element) {
 //CV download
 document.getElementById("descargar-cv").addEventListener("click", function () {
     const link = document.createElement("a");
-    link.href = "archivo/CV_Jesus_Santiago_Serrano_Ruiz.pdf"; // Ruta con espacios codificados
-    link.download = "CV_Jesus_Santiago_Serrano_Ruiz.pdf"; // Nombre del archivo al descargar
+    link.href = "archivo/CV_Jesus_Santiago_Serrano_Ruiz_2025.pdf"; // Ruta con espacios codificados
+    link.download = "CV_Jesus_Santiago_Serrano_Ruiz_2025.pdf"; // Nombre del archivo al descargar
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -96,3 +96,27 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     })
     .catch(error => console.error("Error:", error));
 });
+
+// Función para actualizar los colores de habilidades según el porcentaje
+function actualizarHabilidades() {
+    let habilidades = document.querySelectorAll(".progreso");
+    
+    habilidades.forEach(habilidad => {
+        let porcentaje = parseInt(habilidad.textContent);
+        let barraSpan = habilidad.closest(".barra-skill").querySelector("span");
+        
+        if (porcentaje < 40) {
+            habilidad.style.backgroundColor = "red";
+            barraSpan.style.backgroundColor = "red";
+        } else if (porcentaje <= 70) {
+            habilidad.style.backgroundColor = "orange";
+            barraSpan.style.backgroundColor = "orange";
+        } else {
+            habilidad.style.backgroundColor = "green";
+            barraSpan.style.backgroundColor = "green";
+        }
+    });
+}
+
+// Ejecutar la función al cargar la página
+window.onload = actualizarHabilidades;

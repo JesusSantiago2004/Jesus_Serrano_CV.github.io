@@ -246,11 +246,13 @@ html{
     height: 8px;
     width: 80%;
     background-color: #131517;
+    border-radius: 50px;
     position: relative;
     margin-bottom: 30px;
 }
 .skills .skill .progreso{
     background-color:  #b61c1c;
+    border-radius: 50px;
     position: absolute;
     top: 0;
     left: 0;
@@ -894,16 +896,3 @@ footer .arriba{
 .dedicacion-icon:hover {
     filter: drop-shadow(2px 2px 8px rgba(255, 215, 0, 0.8));
 }
-
-/*Social Icons
-
-.facebook-icon {
-    color: #1877F2;
-    transition: color 0.3s ease-in-out;
-}
-
-.facebook-icon:hover {
-    color: #0d6efd;
-    filter: drop-shadow(2px 2px 8px rgba(24, 119, 242, 0.8));
-}
-*/
